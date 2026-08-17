@@ -2,6 +2,12 @@
 
 A modern, responsive developer portfolio for Carlos Linares, Full Stack Developer and Development Analyst based in the Dominican Republic. It presents professional experience, selected work and live public GitHub data in a focused dark interface.
 
+## Live Portfolio
+
+https://portafolio-vue-xi.vercel.app/
+
+Repository: https://github.com/KarlangaXZ/Portafolio-VUE
+
 ## Stack
 
 - Vue 3
@@ -61,9 +67,10 @@ npm run build
 
 The portfolio uses the public GitHub REST API to load repositories and language data for `KarlangaXZ`. Requests are made without a token or embedded credentials. Repository and language responses are cached in `sessionStorage` for ten minutes, and detailed language requests use limited concurrency to respect the public API rate limit.
 
-## Deployment checklist
+## Deployment
 
-Before deployment:
+The portfolio is deployed on Vercel and connected to the GitHub repository for automatic deployments.
 
-- Add the confirmed production domain as an absolute canonical URL and `og:url` in `index.html`.
-- Confirm the final hosting platform and base URL.
+Remaining content improvement:
+
+- Add verified screenshots for featured projects when they become available.
