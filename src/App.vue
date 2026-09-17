@@ -21,9 +21,9 @@ import BackToTop from '@/components/ui/BackToTop.vue'
       <HeroSection />
       <AboutSection />
       <WhatIDoSection />
-      <TechStackSection />
       <ExperienceSection />
       <FeaturedProjectsSection />
+      <TechStackSection />
       <GithubProjectsSection />
       <GithubStatsSection />
       <BeyondCodeSection />

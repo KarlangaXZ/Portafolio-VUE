@@ -26,26 +26,12 @@ withDefaults(
 </template>
 
 <style scoped>
-.button {
-  align-items: center;
-  border: 1px solid transparent;
-  border-radius: 0.7rem;
-  display: inline-flex;
-  font-size: 0.86rem;
-  font-weight: 700;
-  gap: 0.55rem;
-  justify-content: center;
-  min-height: var(--control-height);
-  padding: 0 1.15rem;
-  transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.button:hover { transform: translateY(-2px); }
-.button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-.button--primary { background: var(--color-accent); color: #06110d; }
-.button--primary:hover { background: #80ffce; }
-.button--secondary { background: rgba(255, 255, 255, 0.035); border-color: var(--color-border-strong); color: var(--color-text); }
-.button--secondary:hover { border-color: rgba(89, 255, 189, 0.45); }
-.button--ghost { color: var(--color-muted); padding-inline: 0.65rem; }
-.button--ghost:hover { color: var(--color-text); }
+.button { align-items: center; border: 1px solid transparent; border-radius: 999px; display: inline-flex; font-size: .8rem; font-weight: 600; gap: .7rem; justify-content: center; min-height: 3.25rem; padding: .7rem 1.3rem; transition: background 180ms ease, border-color 180ms ease, color 180ms ease; }
+.button svg { flex-shrink: 0; }
+.button--primary { background: var(--color-accent); color: #090b10; }
+.button--primary:hover { background: #a0ffda; }
+.button--secondary { background: transparent; border-color: var(--color-border-strong); color: var(--color-text); }
+.button--secondary:hover { background: rgba(255,255,255,.05); border-color: var(--color-muted); }
+.button--ghost { color: var(--color-secondary); padding-inline: .8rem; }
+.button--ghost:hover { color: var(--color-accent); }
 </style>

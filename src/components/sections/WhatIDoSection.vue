@@ -16,7 +16,7 @@ const services = [
 <template>
   <section id="services" ref="sectionRef" class="services section section--surface scroll-reveal" aria-label="What I do">
     <div class="container">
-      <SectionHeading eyebrow="What I do" title="From idea to reliable software." description="End-to-end development with a practical focus on business value, maintainability and clean implementation." />
+      <SectionHeading number="02" eyebrow="What I do" title="From idea to reliable software." description="End-to-end development with a practical focus on business value, maintainability and clean implementation." />
       <div class="services__grid">
         <article v-for="service in services" :key="service.title" class="service-card">
           <div class="service-card__top">
@@ -35,17 +35,14 @@ const services = [
 </template>
 
 <style scoped>
-.services__grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 3.5rem; }
-.service-card { background: linear-gradient(145deg, rgba(17, 23, 34, 0.92), rgba(11, 15, 23, 0.72)); border: 1px solid var(--color-border); border-radius: var(--radius-card); min-height: 22rem; overflow: hidden; padding: clamp(1.4rem, 3vw, 2rem); position: relative; transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease; }
-.service-card::after { background: var(--color-accent); border-radius: 50%; content: ''; filter: blur(30px); height: 5rem; opacity: 0; position: absolute; right: -3rem; top: -3rem; transition: opacity 200ms ease; width: 5rem; }
-.service-card:hover { border-color: rgba(89, 255, 189, 0.24); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18); transform: translateY(-4px); }
-.service-card:hover::after { opacity: 0.1; }
-.service-card__top { align-items: center; display: flex; justify-content: space-between; }
-.service-card__icon { align-items: center; background: rgba(89, 255, 189, 0.08); border: 1px solid rgba(89, 255, 189, 0.14); border-radius: 0.75rem; color: var(--color-accent); display: flex; height: 3rem; justify-content: center; width: 3rem; }
-.service-card__number { color: var(--color-dim); font-family: var(--font-mono); font-size: 0.65rem; }
-h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); letter-spacing: -0.035em; margin: 2.3rem 0 0; }
-.service-card p { color: var(--color-muted); font-size: 0.9rem; line-height: 1.75; margin: 0.9rem 0 0; max-width: 31rem; }
-ul { display: flex; flex-wrap: wrap; gap: 0.45rem; list-style: none; margin: 2rem 0 0; padding: 0; }
-li { background: rgba(255, 255, 255, 0.035); border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-secondary); font-family: var(--font-mono); font-size: 0.61rem; padding: 0.42rem 0.68rem; }
-@media (max-width: 700px) { .services__grid { grid-template-columns: 1fr; } .service-card { min-height: auto; } }
+.services__grid { border-top: 1px solid var(--color-border); margin-top: 4rem; }
+.service-card { align-items: start; border-bottom: 1px solid var(--color-border); display: grid; gap: 1rem 2rem; grid-template-columns: 3rem minmax(0, 1fr) minmax(0, .9fr); padding: 2.5rem 0; }
+.service-card__top { align-items: center; display: flex; flex-direction: column; gap: .9rem; }
+.service-card__icon { color: var(--color-muted); }
+.service-card__number { color: var(--color-dim); font: .6rem var(--font-mono); }
+h3 { font-size: clamp(1.4rem, 2.5vw, 2.3rem); font-weight: 500; letter-spacing: -.04em; margin: 0; max-width: 18ch; }
+.service-card p { color: var(--color-muted); font-size: .9rem; line-height: 1.8; margin: 0; }
+ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; grid-column: 3; list-style: none; margin: 0; padding: 0; }
+li { color: var(--color-dim); font: .6rem/1.7 var(--font-mono); }
+@media (max-width: 700px) { .service-card { grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; } .service-card p, ul { grid-column: 2; } }
 </style>

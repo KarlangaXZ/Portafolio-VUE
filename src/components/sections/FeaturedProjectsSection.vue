@@ -15,9 +15,9 @@ const selectedProject = ref<Project | null>(null)
 <template>
   <section id="projects" ref="sectionRef" class="projects section scroll-reveal" aria-label="Featured projects">
     <div class="container projects__content">
-      <SectionHeading eyebrow="Featured projects" title="Software, put into practice." description="A selection of applications and experiments that showcase how I approach frontend, backend and full-stack development." />
+      <div class="projects__heading"><SectionHeading number="04" eyebrow="Selected work" title="Built to solve. Designed to last." /><p>A closer look at the applications, tools and experiments behind my work.<span>{{ String(featuredProjects.length).padStart(2, '0') }} SELECTED PROJECTS</span></p></div>
       <div class="projects__grid">
-        <ProjectCard v-for="(project, index) in featuredProjects" :key="project.slug" :project="project" :primary="index === 0" @select="selectedProject = $event" />
+        <ProjectCard v-for="(project, index) in featuredProjects" :key="project.slug" :project="project" :primary="index === 0" :number="index + 1" @select="selectedProject = $event" />
       </div>
     </div>
     <ProjectModal :project="selectedProject" @close="selectedProject = null" />
@@ -25,7 +25,10 @@ const selectedProject = ref<Project | null>(null)
 </template>
 
 <style scoped>
-.projects { overflow: hidden; position: relative; }.projects__content { position: relative; }.projects__grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(12,minmax(0,1fr)); margin-top: 3.5rem; }.projects__grid :deep(.project-card:nth-child(1)) { grid-column: 1/-1; }.projects__grid :deep(.project-card:nth-child(2)),.projects__grid :deep(.project-card:nth-child(3)) { grid-column: span 6; }.projects__grid :deep(.project-card:nth-child(4)) { grid-column: 1/5; }.projects__grid :deep(.project-card:nth-child(5)) { grid-column: 5/9; }.projects__grid :deep(.project-card:nth-child(6)) { grid-column: 9/13; }
-@media (max-width: 900px) { .projects__grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.projects__grid :deep(.project-card:nth-child(n)) { grid-column: auto; grid-row: auto; }.projects__grid :deep(.project-card:nth-child(1)) { grid-column: 1/-1; } }
-@media (max-width: 600px) { .projects__grid { grid-template-columns: 1fr; }.projects__grid :deep(.project-card:nth-child(1)) { grid-column: auto; } }
+.projects { border-top: 1px solid var(--color-border); }
+.projects__heading { align-items: end; display: grid; gap: 3rem; grid-template-columns: minmax(0, 1.5fr) minmax(0, .6fr); }
+.projects__heading > p { color: var(--color-muted); font-size: .9rem; line-height: 1.8; margin: 0 0 .4rem; }
+.projects__heading > p span { color: var(--color-dim); display: block; font: .6rem var(--font-mono); letter-spacing: .12em; margin-top: 2rem; }
+.projects__grid { display: grid; gap: clamp(4rem, 8vw, 8rem); margin-top: 4rem; }
+@media (max-width: 760px) { .projects__heading { grid-template-columns: 1fr; gap: 1.5rem; } }
 </style>

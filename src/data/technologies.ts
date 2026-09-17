@@ -10,9 +10,9 @@ export const technologyCategories: TechnologyCategory[] = [
   { id: 'all', label: 'All' },
   { id: 'frontend', label: 'Frontend' },
   { id: 'backend', label: 'Backend' },
-  { id: 'databases', label: 'Databases' },
-  { id: 'cloud-tools', label: 'Cloud & Tools' },
-  { id: 'additional', label: 'Additional' },
+  { id: 'databases', label: 'Database' },
+  { id: 'cloud-tools', label: 'Tools' },
+  { id: 'additional', label: 'Also exploring' },
 ]
 
 export const technologies: Technology[] = [
@@ -45,4 +45,4 @@ export const technologies: Technology[] = [
   { name: 'Rust', icon: siRust, category: 'additional' },
 ]
 
-export const primaryTechnologies = ['Vue.js', 'JavaScript', 'TypeScript', 'C#', '.NET', 'Oracle', 'SQL', 'REST APIs', 'Git']
+export const primaryTechnologies = ['Vue.js', 'TypeScript', 'C#', '.NET', 'Oracle', 'REST APIs', 'Git']

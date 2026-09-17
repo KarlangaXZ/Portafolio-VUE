@@ -14,7 +14,7 @@ export function useScrollReveal<T extends HTMLElement>(): Ref<T | null> {
       if (!entry?.isIntersecting) return
       entry.target.classList.add('is-visible')
       observer?.unobserve(entry.target)
-    }, { threshold: 0.12, rootMargin: '0px 0px -48px' })
+    }, { threshold: 0, rootMargin: '0px 0px -48px' })
 
     observer.observe(target.value)
   })

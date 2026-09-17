@@ -21,49 +21,37 @@ const profileDetails = [
 <template>
   <section id="about" ref="sectionRef" class="about section scroll-reveal" aria-label="About Carlos Linares">
     <div class="container about__grid">
-      <div class="about__copy">
-        <SectionHeading eyebrow="About me" title="Thoughtful code. Practical solutions." />
-        <div class="about__body">
-          <p>I'm a Full Stack Developer and Development Analyst focused on building reliable, maintainable and scalable software solutions.</p>
-          <p>I build web applications and APIs with Vue.js, JavaScript, C# and .NET, backed by Oracle and SQL. I keep exploring software architecture and new technologies.</p>
-          <p>Outside of development, I enjoy technology and gaming.</p>
-        </div>
+      <SectionHeading number="01" eyebrow="About me" title="The person behind the code." />
+      <div class="about__body">
+        <p class="about__lead">I'm Carlos. I turn business requirements into software people can rely on.</p>
+        <p>Full Stack Developer and Development Analyst working with Vue.js, JavaScript, C# and .NET, backed by Oracle and SQL.</p>
+        <p>I keep exploring software architecture and new technologies. Away from the keyboard, there's usually a game in progress.</p>
+        <a href="#beyond-code">Beyond the work <span aria-hidden="true">&nearr;</span></a>
       </div>
-      <div class="about__panel">
-        <div class="capability-grid">
-          <article v-for="capability in capabilities" :key="capability.label" class="capability-card">
-            <component :is="capability.icon" :size="20" :stroke-width="1.7" aria-hidden="true" />
-            <span>{{ capability.label }}</span>
-          </article>
-        </div>
-        <dl class="profile-list">
-          <div v-for="detail in profileDetails" :key="detail.label">
-            <dt>{{ detail.label }}</dt>
-            <dd><MapPin v-if="detail.label === 'Location'" :size="14" aria-hidden="true" />{{ detail.value }}</dd>
-          </div>
-        </dl>
+      <dl class="profile-list">
+        <div v-for="detail in profileDetails" :key="detail.label"><dt>{{ detail.label }}</dt><dd><MapPin v-if="detail.label === 'Location'" :size="14" aria-hidden="true" />{{ detail.value }}</dd></div>
+      </dl>
+      <div class="capability-grid">
+        <article v-for="capability in capabilities" :key="capability.label" class="capability-card"><component :is="capability.icon" :size="18" :stroke-width="1.5" aria-hidden="true" /><span>{{ capability.label }}</span></article>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.about { position: relative; }
-.about__grid { align-items: start; display: grid; gap: clamp(3rem, 8vw, 7rem); grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr); }
-.about__body { border-left: 1px solid var(--color-border-strong); margin-top: 2rem; padding-left: 1.5rem; }
-.about__body p { color: var(--color-muted); line-height: 1.8; margin: 0; max-width: 42rem; }
-.about__body p + p { margin-top: 1rem; }
-.about__panel { background: linear-gradient(145deg, rgba(18, 24, 35, 0.78), rgba(11, 15, 23, 0.6)); border: 1px solid var(--color-border); border-radius: 1.2rem; padding: 1rem; }
-.capability-grid { display: grid; gap: 0.65rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.capability-card { align-items: center; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--color-border); border-radius: 0.8rem; display: flex; gap: 0.8rem; min-height: 5.6rem; padding: 1rem; }
-.capability-card svg { color: var(--color-accent); flex: 0 0 auto; }
-.capability-card span { color: var(--color-secondary); font-size: 0.82rem; font-weight: 650; line-height: 1.4; }
-.profile-list { border-top: 1px solid var(--color-border); margin: 1rem 0 0; padding: 0.3rem 0.45rem 0; }
-.profile-list > div { align-items: center; display: grid; gap: 1rem; grid-template-columns: 0.7fr 1.3fr; padding: 0.9rem 0.45rem; }
-.profile-list > div + div { border-top: 1px solid var(--color-border); }
-dt { color: var(--color-dim); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; }
-dd { align-items: center; color: var(--color-secondary); display: flex; font-size: 0.78rem; font-weight: 600; gap: 0.4rem; margin: 0; }
-dd svg { color: var(--color-accent); }
-@media (max-width: 850px) { .about__grid { grid-template-columns: 1fr; } .about__panel { max-width: 42rem; } }
-@media (max-width: 480px) { .capability-grid { grid-template-columns: 1fr; } .profile-list > div { align-items: start; grid-template-columns: 1fr; gap: 0.35rem; } }
+.about__grid { display: grid; gap: 4rem clamp(3rem, 9vw, 9rem); grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.about__body { padding-top: 3rem; }
+.about__body p { color: var(--color-muted); font-size: .95rem; line-height: 1.9; margin: 0 0 1.3rem; }
+.about__body .about__lead { color: var(--color-text); font-size: clamp(1.4rem, 2.1vw, 1.9rem); letter-spacing: -.03em; line-height: 1.5; }
+.about__body a { align-items: center; border-bottom: 1px solid var(--color-border-strong); display: inline-flex; font-size: .8rem; gap: 2rem; padding-block: .7rem; }
+.about__body a:hover { color: var(--color-accent); }
+.profile-list { border-top: 1px solid var(--color-border); margin: 0; padding-top: 1rem; }
+.profile-list > div { display: flex; flex-wrap: wrap; gap: .5rem 1rem; justify-content: space-between; padding: .8rem 0; }
+dt { color: var(--color-dim); font: .65rem var(--font-mono); text-transform: uppercase; }
+dd { align-items: center; color: var(--color-secondary); display: flex; font-size: .8rem; gap: .4rem; margin: 0; }
+.capability-grid { align-self: start; border-top: 1px solid var(--color-border); display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-top: 1.8rem; }
+.capability-card { align-items: start; color: var(--color-secondary); display: flex; font-size: .75rem; gap: .75rem; line-height: 1.6; }
+.capability-card svg { color: var(--color-dim); flex-shrink: 0; margin-top: .1rem; }
+@media (max-width: 760px) { .about__grid { grid-template-columns: 1fr; gap: 2.5rem; } .about__body { padding-top: 0; } }
+@media (max-width: 380px) { .capability-grid { grid-template-columns: 1fr; } }
 </style>

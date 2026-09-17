@@ -12,46 +12,49 @@ const activeCategory = ref<TechnologyFilter>('all')
 const filteredTechnologies = computed(() => activeCategory.value === 'all'
   ? technologies
   : technologies.filter((technology) => technology.category === activeCategory.value))
+const technologyGroups = computed(() => technologyCategories
+  .filter((category) => category.id !== 'all')
+  .map((category) => ({ ...category, items: filteredTechnologies.value.filter((technology) => technology.category === category.id) }))
+  .filter((category) => category.items.length))
 </script>
 
 <template>
   <section id="skills" ref="sectionRef" class="stack section scroll-reveal" aria-label="Technology stack">
     <div class="container stack__content">
-      <SectionHeading eyebrow="Tech stack" title="Technologies I work with" description="A growing toolkit for building modern applications across frontend, backend, databases and infrastructure." align="center" />
+      <SectionHeading number="05" eyebrow="Tech stack" title="The right tools. A considered approach." description="From the interface to the database: the technologies behind my work." />
       <div class="stack__filters" role="group" aria-label="Filter technologies by category">
         <button v-for="category in technologyCategories" :key="category.id" type="button" :class="{ 'is-active': activeCategory === category.id }" :aria-pressed="activeCategory === category.id" @click="activeCategory = category.id">
           {{ category.label }}
         </button>
       </div>
-      <TransitionGroup name="technology-list" tag="div" class="stack__grid">
-        <component :is="technology.url ? 'a' : 'div'" v-for="technology in filteredTechnologies" :key="technology.name" class="technology-card" :href="technology.url" :target="technology.url ? '_blank' : undefined" :rel="technology.url ? 'noreferrer' : undefined">
-          <span class="technology-card__icon"><TechnologyIcon :icon="technology.icon" :title="technology.name" /></span>
-          <span>{{ technology.name }}</span>
-        </component>
-      </TransitionGroup>
+      <div class="stack__groups">
+        <div v-for="(group, index) in technologyGroups" :key="group.id" class="stack__group">
+          <h3><span>{{ String(index + 1).padStart(2, '0') }}</span>{{ group.label }}</h3>
+          <div class="stack__items">
+            <component :is="technology.url ? 'a' : 'div'" v-for="technology in group.items" :key="technology.name" class="technology-card" :href="technology.url" :target="technology.url ? '_blank' : undefined" :rel="technology.url ? 'noreferrer' : undefined">
+              <span class="technology-card__icon"><TechnologyIcon :icon="technology.icon" :title="technology.name" /></span>
+              <span>{{ technology.name }}</span>
+            </component>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.stack { overflow: hidden; position: relative; }
-.stack::before { background-image: radial-gradient(var(--color-grid) 1px, transparent 1px); background-size: 24px 24px; content: ''; inset: 0; mask-image: linear-gradient(to bottom, transparent, black 30%, black 75%, transparent); pointer-events: none; position: absolute; }
-.stack__content { position: relative; }
-.stack__filters { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 2.5rem auto 0; }
-.stack__filters button { background: rgba(255, 255, 255, 0.025); border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-muted); cursor: pointer; font-family: var(--font-mono); font-size: 0.65rem; min-height: 2.5rem; padding: 0 1rem; transition: background 180ms ease, border-color 180ms ease, color 180ms ease; }
-.stack__filters button:hover { border-color: var(--color-border-strong); color: var(--color-text); }
-.stack__filters button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-.stack__filters button.is-active { background: rgba(89, 255, 189, 0.09); border-color: rgba(89, 255, 189, 0.32); color: var(--color-accent); }
-.stack__grid { display: grid; gap: 0.75rem; grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: 2.2rem; min-height: 15rem; }
-.technology-card { align-items: center; background: linear-gradient(145deg, rgba(18, 24, 35, 0.78), rgba(10, 14, 22, 0.82)); border: 1px solid var(--color-border); border-radius: 0.85rem; color: var(--color-secondary); display: flex; flex-direction: column; font-size: 0.72rem; font-weight: 650; gap: 0.95rem; justify-content: center; min-height: 8.2rem; padding: 1rem 0.5rem; text-align: center; transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease; }
-.technology-card:hover { border-color: rgba(89, 255, 189, 0.3); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2), inset 0 0 24px rgba(89, 255, 189, 0.025); color: var(--color-text); transform: translateY(-4px); }
-.technology-card__icon { color: #8e9bab; transition: color 180ms ease, transform 180ms ease; }
-.technology-card:hover .technology-card__icon { color: var(--color-accent); transform: scale(1.08); }
-.technology-list-enter-active, .technology-list-leave-active { transition: opacity 160ms ease, transform 160ms ease; }
-.technology-list-enter-from, .technology-list-leave-to { opacity: 0; transform: translateY(6px); }
-.technology-list-leave-active { position: absolute; }
-@media (max-width: 1040px) { .stack__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-@media (max-width: 680px) { .stack__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 430px) { .stack__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stack__filters { justify-content: flex-start; } }
-@media (prefers-reduced-motion: reduce) { .technology-list-enter-active, .technology-list-leave-active { transition: none; } }
+.stack { border-top: 1px solid var(--color-border); }
+.stack__filters { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; margin: 3rem 0 2rem; }
+.stack__filters button { background: transparent; border: 0; border-bottom: 1px solid transparent; color: var(--color-muted); cursor: pointer; font: .7rem var(--font-mono); min-height: 2.75rem; padding: .5rem 0; }
+.stack__filters button:hover { color: var(--color-text); }
+.stack__filters button.is-active { border-color: var(--color-accent); color: var(--color-text); }
+.stack__group { border-top: 1px solid var(--color-border); display: grid; gap: 2rem; grid-template-columns: minmax(0, .4fr) minmax(0, 1fr); padding: 2rem 0; }
+h3 { align-items: baseline; display: flex; font-size: 1.3rem; font-weight: 500; gap: 1rem; letter-spacing: -.03em; margin: .65rem 0 0; }
+h3 span { color: var(--color-dim); font: .6rem var(--font-mono); }
+.stack__items { align-content: start; display: flex; flex-wrap: wrap; gap: .5rem 1.7rem; }
+.technology-card { align-items: center; color: var(--color-secondary); display: inline-flex; font-size: .82rem; gap: .65rem; min-height: 3rem; padding-block: .5rem; }
+.technology-card__icon { color: var(--color-dim); }
+.technology-card__icon :deep(svg) { height: 1.15rem; width: 1.15rem; }
+a.technology-card:hover { color: var(--color-accent); }
+@media (max-width: 650px) { .stack__group { grid-template-columns: 1fr; gap: 1rem; } .stack__items { gap: .35rem 1.4rem; } }
 </style>
