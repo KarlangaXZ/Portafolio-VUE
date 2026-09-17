@@ -16,7 +16,6 @@ const filteredTechnologies = computed(() => activeCategory.value === 'all'
 
 <template>
   <section id="skills" ref="sectionRef" class="stack section scroll-reveal" aria-label="Technology stack">
-    <div class="stack__glow" aria-hidden="true"></div>
     <div class="container stack__content">
       <SectionHeading eyebrow="Tech stack" title="Technologies I work with" description="A growing toolkit for building modern applications across frontend, backend, databases and infrastructure." align="center" />
       <div class="stack__filters" role="group" aria-label="Filter technologies by category">
@@ -37,7 +36,6 @@ const filteredTechnologies = computed(() => activeCategory.value === 'all'
 <style scoped>
 .stack { overflow: hidden; position: relative; }
 .stack::before { background-image: radial-gradient(var(--color-grid) 1px, transparent 1px); background-size: 24px 24px; content: ''; inset: 0; mask-image: linear-gradient(to bottom, transparent, black 30%, black 75%, transparent); pointer-events: none; position: absolute; }
-.stack__glow { background: rgba(89, 255, 189, 0.045); border-radius: 50%; filter: blur(35px); height: 30rem; left: 50%; pointer-events: none; position: absolute; top: 25%; transform: translateX(-50%); width: 50rem; }
 .stack__content { position: relative; }
 .stack__filters { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 2.5rem auto 0; }
 .stack__filters button { background: rgba(255, 255, 255, 0.025); border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-muted); cursor: pointer; font-family: var(--font-mono); font-size: 0.65rem; min-height: 2.5rem; padding: 0 1rem; transition: background 180ms ease, border-color 180ms ease, color 180ms ease; }

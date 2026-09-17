@@ -2,6 +2,7 @@
 import AppFooter from '@/components/layout/AppFooter.vue'
 import AppNavbar from '@/components/layout/AppNavbar.vue'
 import AboutSection from '@/components/sections/AboutSection.vue'
+import BeyondCodeSection from '@/components/sections/BeyondCodeSection.vue'
 import ContactSection from '@/components/sections/ContactSection.vue'
 import ExperienceSection from '@/components/sections/ExperienceSection.vue'
 import FeaturedProjectsSection from '@/components/sections/FeaturedProjectsSection.vue'
@@ -25,6 +26,7 @@ import BackToTop from '@/components/ui/BackToTop.vue'
       <FeaturedProjectsSection />
       <GithubProjectsSection />
       <GithubStatsSection />
+      <BeyondCodeSection />
       <ContactSection />
     </main>
     <AppFooter />

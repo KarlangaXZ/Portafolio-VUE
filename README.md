@@ -74,3 +74,9 @@ The portfolio is deployed on Vercel and connected to the GitHub repository for a
 Remaining content improvement:
 
 - Add verified screenshots for featured projects when they become available.
+
+## Beyond Code
+
+Game data lives in `src/data/games.ts`. Add `wow.webp`, `diablo-iv.webp`, `apex-legends.webp` and `forza-horizon.webp` to `src/assets/games/`, then restart Vite or rebuild. Missing covers display local CSS placeholders. See `src/assets/games/README.md` for image guidance. No new dependencies were added.
+
+The contact form remains a local preview; LinkedIn is the active contact channel. Featured project content and optional screenshots remain configured in `src/data/projects.ts`.

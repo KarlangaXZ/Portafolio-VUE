@@ -22,10 +22,11 @@ const profileDetails = [
   <section id="about" ref="sectionRef" class="about section scroll-reveal" aria-label="About Carlos Linares">
     <div class="container about__grid">
       <div class="about__copy">
-        <SectionHeading eyebrow="About me" title="Building software from business requirements to production." />
+        <SectionHeading eyebrow="About me" title="Thoughtful code. Practical solutions." />
         <div class="about__body">
           <p>I'm a Full Stack Developer and Development Analyst focused on building reliable, maintainable and scalable software solutions.</p>
-          <p>I work across frontend, backend and databases, transforming business requirements into practical applications and continuously improving my knowledge of software architecture, APIs and modern development practices.</p>
+          <p>I build web applications and APIs with Vue.js, JavaScript, C# and .NET, backed by Oracle and SQL. I keep exploring software architecture and new technologies.</p>
+          <p>Outside of development, I enjoy technology and gaming.</p>
         </div>
       </div>
       <div class="about__panel">
@@ -48,7 +49,6 @@ const profileDetails = [
 
 <style scoped>
 .about { position: relative; }
-.about::after { background: rgba(89, 255, 189, 0.045); border-radius: 50%; content: ''; filter: blur(45px); height: 18rem; pointer-events: none; position: absolute; right: -9rem; top: 20%; width: 18rem; }
 .about__grid { align-items: start; display: grid; gap: clamp(3rem, 8vw, 7rem); grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr); }
 .about__body { border-left: 1px solid var(--color-border-strong); margin-top: 2rem; padding-left: 1.5rem; }
 .about__body p { color: var(--color-muted); line-height: 1.8; margin: 0; max-width: 42rem; }

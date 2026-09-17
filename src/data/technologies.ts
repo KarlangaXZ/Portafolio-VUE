@@ -44,3 +44,5 @@ export const technologies: Technology[] = [
   { name: 'GDScript', icon: siGodotengine, category: 'additional' },
   { name: 'Rust', icon: siRust, category: 'additional' },
 ]
+
+export const primaryTechnologies = ['Vue.js', 'JavaScript', 'TypeScript', 'C#', '.NET', 'Oracle', 'SQL', 'REST APIs', 'Git']
